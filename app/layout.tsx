@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import logo from "../images/logo.svg";
+import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx(inter.className, "h-screen flex flex-col")}>
+        <header className="flex p-6 bg-white">
+          <Image src={logo} unoptimized alt="Logo" />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
